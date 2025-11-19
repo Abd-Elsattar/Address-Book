@@ -32,7 +32,7 @@ dotnet run
 
 ---
 
-## ▶️ Run Frontend
+## Run Frontend
 
 cd Frontend
 npm install
