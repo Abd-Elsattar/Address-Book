@@ -26,6 +26,7 @@ The system includes:
 
 ## Run Backend
 
+Place your connection string in your appsetting.json file !!!.
 cd Backend
 dotnet restore
 dotnet run
