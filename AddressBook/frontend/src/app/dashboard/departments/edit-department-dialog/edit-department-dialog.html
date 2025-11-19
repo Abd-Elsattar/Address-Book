@@ -1,0 +1,19 @@
+<h1 mat-dialog-title class="fw-bold mb-2">Edit Department</h1>
+
+<div mat-dialog-content>
+
+  <form [formGroup]="form" class="mb-3">
+
+    <div class="mb-3">
+      <label class="form-label">Name:</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+
+  </form>
+
+  <div class="d-flex gap-2 mt-3">
+    <button class="btn btn-secondary" (click)="dialogRef.close()">Cancel</button>
+    <button class="btn btn-primary" (click)="save()">Save</button>
+  </div>
+
+</div>

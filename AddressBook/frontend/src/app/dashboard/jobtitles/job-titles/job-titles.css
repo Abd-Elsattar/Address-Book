@@ -1,0 +1,12 @@
+h2 {
+  font-weight: 600;
+}
+
+.card {
+  border-radius: 10px;
+  background: #fff;
+}
+
+button {
+  white-space: nowrap;
+}

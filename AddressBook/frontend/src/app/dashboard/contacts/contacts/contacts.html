@@ -1,0 +1,127 @@
+<div class="container py-3">
+
+  <h2 class="mb-4 fw-bold text-center">Contacts</h2>
+
+  <div class="row mb-4 gy-2 align-items-end">
+
+    <div class="col-md-5">
+      <input type="text" class="form-control" placeholder="Search in all fields..."
+        [(ngModel)]="searchText" (input)="applySearch()">
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label small mb-1">Date From</label>
+      <input type="date" class="form-control" [(ngModel)]="dateFrom" (change)="applySearch()">
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label small mb-1">Date To</label>
+      <input type="date" class="form-control" [(ngModel)]="dateTo" (change)="applySearch()">
+    </div>
+
+    <div class="col-md-1">
+      <button class="btn btn-secondary w-100" (click)="clearFilters()">Clear</button>
+    </div>
+  </div>
+
+  <div class="card mb-4 p-3 shadow-sm">
+    <h5 class="mb-3 fw-bold text-center">Add New Contact</h5>
+
+    <form [formGroup]="createForm" (ngSubmit)="createContact()" class="row g-3">
+
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Full Name" formControlName="fullName">
+      </div>
+
+      <div class="col-md-6">
+        <select class="form-select" formControlName="jobTitleId">
+          <option value="" disabled>Select Job Title</option>
+          <option *ngFor="let j of jobTitles" [value]="j.id">{{ j.title }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <select class="form-select" formControlName="departmentId">
+          <option value="" disabled>Select Department</option>
+          <option *ngFor="let d of departments" [value]="d.id">{{ d.name }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Mobile" formControlName="mobileNumber">
+      </div>
+
+      <div class="col-md-6">
+        <input type="date" class="form-control" formControlName="dateOfBirth">
+      </div>
+
+      <div class="col-md-6">
+        <input type="email" class="form-control" placeholder="Email" formControlName="email">
+      </div>
+
+      <div class="col-12">
+        <input type="text" class="form-control" placeholder="Address" formControlName="address">
+      </div>
+
+      <div class="col-12">
+        <input type="file" class="form-control" (change)="uploadFile($event)">
+        <img *ngIf="photoPreview" [src]="photoPreview" class="mt-2 rounded-circle preview-img">
+      </div>
+
+      <div class="col-12 d-flex justify-content-center">
+        <button class="btn btn-success px-5" type="submit">
+          Add Contact
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="table-responsive" *ngIf="filteredContacts.length > 0; else noData">
+    <table class="table table-hover table-bordered align-middle text-center">
+      <thead class="table-light">
+        <tr>
+          <th>Num</th>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Job</th>
+          <th>Department</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>Date of Birth</th>
+          <th>Age</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let c of filteredContacts; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td><img *ngIf="c.photoPath" [src]="API_HOST + c.photoPath" class="rounded-circle contact-img"></td>
+          <td>{{ c.fullName }}</td>
+          <td>{{ c.jobTitleName }}</td>
+          <td>{{ c.departmentName }}</td>
+          <td>{{ c.mobileNumber }}</td>
+          <td>{{ c.email }}</td>
+          <td>{{ c.dateOfBirth | date }}</td>
+          <td>{{ c.age }}</td>
+          <td><button class="btn btn-warning btn-sm" (click)="openEditDialog(c)">Edit</button></td>
+          <td><button class="btn btn-danger btn-sm" (click)="delete(c.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-end mt-3">
+      <button class="btn btn-primary px-4" (click)="exportExcel()">Export Excel</button>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <div class="text-center py-5">
+      <h3 class="text-muted fw-bold">No contacts found</h3>
+      <p class="text-secondary">Try adjusting search filters…</p>
+    </div>
+  </ng-template>
+
+</div>

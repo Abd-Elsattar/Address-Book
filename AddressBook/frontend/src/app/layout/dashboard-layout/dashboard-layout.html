@@ -1,0 +1,60 @@
+<body class="layout-fixed">
+  <div class="app-wrapper">
+
+    <aside class="app-sidebar text-white" [class.collapsed]="collapsed" [class.mobile-open]="mobileOpen">
+
+      <div class="sidebar-brand p-3 text-center border-bottom">
+        <span class="fw-bold fs-5">AddressBook</span>
+      </div>
+
+      <nav class="mt-3">
+        <ul class="nav flex-column">
+
+          <li class="nav-item">
+            <a routerLink="contacts" routerLinkActive="active" class="nav-link text-white px-3 py-2">
+              <i class="fas fa-address-book me-2"></i> Contacts
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a routerLink="departments" routerLinkActive="active" class="nav-link text-white px-3 py-2">
+              <i class="fas fa-building me-2"></i> Departments
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a routerLink="job-titles" routerLinkActive="active" class="nav-link text-white px-3 py-2">
+              <i class="fas fa-briefcase me-2"></i> Job Titles
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+    </aside>
+
+    <main class="app-main">
+
+      <nav class="app-header navbar navbar-expand px-3 custom-header">
+        <button class="btn btn-outline-primary me-3" (click)="toggleResponsiveSidebar()">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="ms-auto d-flex align-items-center gap-3">
+          <span class="fw-bold text-secondary">👤 {{ userName }}</span>
+          <button class="btn btn-outline-danger btn-sm" (click)="logout()">Logout</button>
+        </div>
+      </nav>
+
+      <section class="app-content p-3" (click)="closeMobileSidebar()">
+        <router-outlet></router-outlet>
+      </section>
+
+      <footer class="custom-footer text-center py-2">
+        © 2025 AddressBook — All Rights Reserved
+      </footer>
+
+    </main>
+
+  </div>
+</body>

@@ -1,0 +1,42 @@
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs
+/.idea
+/.vscode
+.DS_Store
+
+# Angular cache
+.angular/cache
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+
+# Visual Studio
+.vs/
+
+# User settings
+*.user
+*.suo
+
+# Backup
+*~
+
+# Published output
+publish/
+
+
+logs/
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini

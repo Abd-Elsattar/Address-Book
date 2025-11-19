@@ -1,0 +1,40 @@
+.login-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd, #e8eaf6);
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 410px;
+  background: #ffffff;
+  border-radius: 14px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-floating>label {
+  color: #6c757d;
+}
+
+.login-btn {
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.login-btn:hover {
+  background-color: #0d6efd;
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
